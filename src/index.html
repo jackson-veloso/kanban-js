@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <title>Kanban Board</title>
+</head>
+
+<body>
+    <header>
+        <div class="div-header">
+            <h1>Kanban Board</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="box to-do">
+            <div class="box-title">
+                <h4>To Do</h4>
+            </div>
+            <div class="box-card" id="taskToDo">
+                <!-- <div class="card">
+                    <div class="card-content">
+                        <h2>Monetização</h2>
+                        <p>Configure a monetização</p>
+                    </div>
+                    <div class="card-button">
+                        <button type="submit" class="button-card" id="card_button_editar"><img class="button-img" src="img/editar.png"
+                                alt="botão editar"></button>
+                        <button type="submit" class="button-card" id="card_button_excluir"><img class="button-img" src="img/excluir2.png"
+                                alt="botão excluir"></button>
+                    </div>
+
+                </div> -->
+
+            </div>
+            <div class="box-add">
+                <button type="submit" class="button-add" id="button-todo">+</button>
+            </div>
+        </div>
+        <div class="box doing">
+            <div class="box-title">
+                <h4>Doing</h4>
+            </div>
+            <div class="box-card" id="taskDoing">
+
+            </div>
+            <div class="box-add">
+                <button type="submit" class="button-add" id="button-doing">+</button>
+            </div>
+        </div>
+        <div class="box done">
+            <div class="box-title">
+                <h4>Done</h4>
+            </div>
+            <div class="box-card" id="taskDone">
+
+            </div>
+            <div class="box-add">
+                <button type="submit" class="button-add" id="button-done">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="demo-modal" class="modal">
+        <div class="modal__content">
+                <div class="modal-label">
+                    <label for="title">Título *</label>
+                </div>
+                <div>
+                    <input type="text" id="modal-title" class="modal-input" name="title" placeholder="Título" required="required">
+                    <p id="modal-required">campo obrigatório</p>
+                </div>
+                <div class="modal-label">
+                    <label for="description">Descrição</label>
+                </div>
+                <div>
+                    <textarea class="modal-textarea" id="modal-description" name="description" rows="5" cols="21"
+                        placeholder="Descrição"></textarea>
+                </div>
+
+                <div class="modal__footer">
+                    <button type="submit" class="modal-button" id="button-modal-save">Salvar</button>
+                    <button type="reset" class="modal-button" id="button-modal-cancel">Cancelar</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- <footer>
+        <div class="footer-copyright">
+            <p>&copy; 2023 - Todos os direitos reservados</p>
+        </div>
+        <div class="footer-creditos">
+            <a href="https://www.flaticon.com/br/" title="icones" target="_blank">Ícones criados por IYAHICON - Flaticon</a>
+        </div>
+    </footer> -->
+
+    <script src="js/storage.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
