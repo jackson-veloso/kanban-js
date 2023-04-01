@@ -1,7 +1,19 @@
-function openModal(event) {
-    campoTask = event.srcElement.id;
+function openModal(task) {
+    // campoTask = event.srcElement.id;
+    campoTask = task;
     modal.style.visibility = "visible";
     modal.style.opacity = 1;
+}
+
+function openModalEdit(campoTask, title, description) {
+
+    let modal_title = document.getElementById("modal-title");
+    let modal_description = document.getElementById("modal-description");
+
+    modal_title.value = title;
+    modal_description.value = description;
+
+    openModal(campoTask);
 }
 
 function closeModal() {
@@ -9,7 +21,7 @@ function closeModal() {
     modal.style.opacity = 0;
     resetForm();
     modalRequiredNone();
-    
+
 }
 
 function modalRequiredBlock() {

@@ -59,9 +59,6 @@ function showCards() {
 }
 
 function excluirCard(title, campoTask) {
-    console.log(title);
-    console.log(campoTask);
-
 
     let taskStorage = getTaskStorage(campoTask);
     taskStorage.delete(title);
@@ -73,4 +70,11 @@ function excluirCard(title, campoTask) {
     createStorageKey(campoTask, json);
 
     showCards();
+}
+
+function editarCard(title, campoTask) {
+    let taskStorage = getTaskStorage(campoTask);
+    let description = taskStorage.get(title);
+    
+    openModalEdit(campoTask,title,description);
 }

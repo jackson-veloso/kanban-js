@@ -5,7 +5,7 @@ const button_done = document.getElementById("button-done");
 const button_modal_cancel = document.getElementById("button-modal-cancel");
 const button_modal_save = document.getElementById("button-modal-save");
 
-const modal = document.getElementById("demo-modal");
+let modal = document.getElementById("demo-modal");
 
 let campoTask = "";
 
@@ -26,13 +26,13 @@ function saveTask() {
 
         if (campoTask !== "") {
             switch (campoTask) {
-                case "button-todo":
+                case "taskToDo":
                     addTask("taskToDo");
                     break;
-                case "button-doing":
+                case "taskDoing":
                     addTask("taskDoing");
                     break;
-                case "button-done":
+                case "taskDone":
                     addTask("taskDone");
                     break;
                 default:
@@ -53,9 +53,9 @@ function addTask(campoTask) {
 }
 
 
-button_todo.addEventListener("click", openModal);
-button_doing.addEventListener("click", openModal);
-button_done.addEventListener("click", openModal);
+// button_todo.addEventListener("click", openModal);
+// button_doing.addEventListener("click", openModal);
+// button_done.addEventListener("click", openModal);
 
 button_modal_cancel.addEventListener("click", closeModal);
 button_modal_save.addEventListener("click", saveTask);
