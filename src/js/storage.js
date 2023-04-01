@@ -11,6 +11,14 @@ function createStorageKeys() {
     }
 }
 
+function excluirStorageKey(campoTask){
+    localStorage.removeItem(campoTask);
+}
+
+function createStorageKey(campoTask,value) {
+    localStorage.setItem(campoTask,value);
+}
+
 function getTaskStorage(task) {
     let taskStorage = localStorage.getItem(task);
     let mapStorage = new Map(Object.entries(JSON.parse(taskStorage)));
@@ -42,9 +50,9 @@ function clearLocalStorage() {
 window.addEventListener("load", function () {
 
     createStorageKeys();
-    this.setTimeout(showCards,1000);
+    // this.setTimeout(clearLocalStorage,500)
+    this.setTimeout(showCards,2000);
 
-    // this.setTimeout(clearLocalStorage,1000)
 
 });
 

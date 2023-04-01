@@ -9,22 +9,6 @@ const modal = document.getElementById("demo-modal");
 
 let campoTask = "";
 
-let button_card_excluir = document.getElementById("card_button_excluir");
-
-function openModal(event) {
-    campoTask = event.srcElement.id;
-    modal.style.visibility = "visible";
-    modal.style.opacity = 1;
-}
-
-function closeModal() {
-    modal.style.visibility = "hidden";
-    modal.style.opacity = 0;
-    resetForm();
-    modalRequiredNone();
-    
-}
-
 window.onclick = function (event) {
     if (event.target == modal) {
         closeModal();
@@ -59,25 +43,6 @@ function saveTask() {
     }
 }
 
-function modalRequiredBlock() {
-    let modal_required = document.getElementById("modal-required");
-    modal_required.style.display = "block";
-}
-
-function modalRequiredNone() {
-    let modal_required = document.getElementById("modal-required");
-    modal_required.style.display = "none";
-}
-
-function resetForm() {
-    let modal_title = document.getElementById("modal-title");
-    let modal_description = document.getElementById("modal-description");
-
-    modal_title.value = "";
-    modal_description.value = "";
-    campoTask = "";
-}
-
 function addTask(campoTask) {
     let modal_title = document.getElementById("modal-title").value;
     let modal_description = document.getElementById("modal-description").value;
@@ -95,4 +60,3 @@ button_done.addEventListener("click", openModal);
 button_modal_cancel.addEventListener("click", closeModal);
 button_modal_save.addEventListener("click", saveTask);
 
-button_card_excluir.addEventListener("click", excluirCard);

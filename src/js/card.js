@@ -9,9 +9,9 @@ function addCard(campoTask, title, description) {
             <p>${description}</p>
         </div>
         <div class="card-button">
-            <button type="submit" class="button-card" id="card_button_editar"><img class="button-img" src="img/editar.png"
+            <button type="submit" class="button-card-editar" onclick="editarCard('${title}','${campoTask}')"><img class="button-img" src="img/editar.png"
                 alt="botão editar"></button>
-            <button type="submit" class="button-card" id="card_button_excluir"><img class="button-img" src="img/excluir2.png"
+            <button type="submit" class="button-card-excluir" onclick="excluirCard('${title}','${campoTask}')"><img class="button-img" src="img/excluir2.png"
                 alt="botão excluir"></button>
         </div>
     </div> `;
@@ -43,22 +43,34 @@ function showCards() {
             task = "taskDone";
         }
 
-        if (listTask[i].size > 0) {
+        clearCards(task);
 
-            clearCards(task);
+        let arr = Array.from(listTask[i]);
 
-            let arr = Array.from(listTask[i]);
+        for (let j = 0; j < arr.length; j++) {
+            let title = arr[j][0];
+            let description = arr[j][1];
 
-            for (let j = 0; j < arr.length; j++) {
-                let title = arr[j][0];
-                let description = arr[j][1];
-
-                addCard(task,title,description);
-
-            }
+            addCard(task, title, description);
 
         }
-
     }
 
+}
+
+function excluirCard(title, campoTask) {
+    console.log(title);
+    console.log(campoTask);
+
+
+    let taskStorage = getTaskStorage(campoTask);
+    taskStorage.delete(title);
+
+    let obj = Object.fromEntries(taskStorage);
+    let json = JSON.stringify(obj);
+
+    excluirStorageKey(campoTask);
+    createStorageKey(campoTask, json);
+
+    showCards();
 }

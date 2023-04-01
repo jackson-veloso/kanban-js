@@ -25,7 +25,7 @@
   justify-content: right;
 }
 
-.button-card {
+.button-card-editar, .button-card-excluir {
   background-color: #e9d6ef;
   border-color: blueviolet;
   border-radius: 10px;
