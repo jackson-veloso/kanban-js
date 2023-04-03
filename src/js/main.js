@@ -15,6 +15,14 @@ window.onclick = function (event) {
     }
 }
 
+function addTask(campoTask) {
+    let modal_title = document.getElementById("modal-title").value;
+    let modal_description = document.getElementById("modal-description").value;
+
+    addLocalStorage(campoTask,modal_title,modal_description);
+    showCards();
+    closeModal();
+}
 
 function saveTask() {
     
@@ -43,14 +51,7 @@ function saveTask() {
     }
 }
 
-function addTask(campoTask) {
-    let modal_title = document.getElementById("modal-title").value;
-    let modal_description = document.getElementById("modal-description").value;
 
-    addLocalStorage(campoTask,modal_title,modal_description);
-    showCards();
-    closeModal();
-}
 
 
 // button_todo.addEventListener("click", openModal);
@@ -60,3 +61,11 @@ function addTask(campoTask) {
 button_modal_cancel.addEventListener("click", closeModal);
 button_modal_save.addEventListener("click", saveTask);
 
+window.addEventListener("load", function () {
+
+    createStorageKeys();
+    // this.setTimeout(clearLocalStorage,500)
+    this.setTimeout(showCards,500);
+
+
+});

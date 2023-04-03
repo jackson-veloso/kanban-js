@@ -29,9 +29,17 @@ function getTaskStorage(task) {
 function addLocalStorage(task,title,description){
 
     let taskStorage = getTaskStorage(task);
-    // let map = new Map();
-    // map.set(title,description);
-    taskStorage.set(title,description);
+
+    let mapInterno = new Map();
+    mapInterno.set("title",title);
+    mapInterno.set("description",description);
+
+    let objInterno = Object.fromEntries(mapInterno);
+    let stringInterno = JSON.stringify(objInterno);
+
+    let id = getNewID(taskStorage);
+    
+    taskStorage.set(id,stringInterno);
 
     let obj = Object.fromEntries(taskStorage);
     let json = JSON.stringify(obj);
@@ -45,14 +53,10 @@ function clearLocalStorage() {
     localStorage.clear();
 }
 
+function getNewID(taskStorage){
+    return taskStorage.size;
+}
 
 
-window.addEventListener("load", function () {
 
-    createStorageKeys();
-    // this.setTimeout(clearLocalStorage,500)
-    this.setTimeout(showCards,2000);
-
-
-});
 

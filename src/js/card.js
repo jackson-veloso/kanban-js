@@ -1,4 +1,4 @@
-function addCard(campoTask, title, description) {
+function addCard(campoTask, id, title, description) {
 
     let box_card = document.getElementById(campoTask);
 
@@ -9,9 +9,9 @@ function addCard(campoTask, title, description) {
             <p>${description}</p>
         </div>
         <div class="card-button">
-            <button type="submit" class="button-card-editar" onclick="editarCard('${title}','${campoTask}')"><img class="button-img" src="img/editar.png"
+            <button type="submit" class="button-card-editar" onclick="editarCard('${id}','${campoTask}')"><img class="button-img" src="img/editar.png"
                 alt="botão editar"></button>
-            <button type="submit" class="button-card-excluir" onclick="excluirCard('${title}','${campoTask}')"><img class="button-img" src="img/excluir2.png"
+            <button type="submit" class="button-card-excluir" onclick="excluirCard('${id}','${campoTask}')"><img class="button-img" src="img/excluir2.png"
                 alt="botão excluir"></button>
         </div>
     </div> `;
@@ -48,26 +48,30 @@ function showCards() {
         let arr = Array.from(listTask[i]);
 
         for (let j = 0; j < arr.length; j++) {
-            let title = arr[j][0];
-            let description = arr[j][1];
 
-            addCard(task, title, description);
+            let id = arr[j][0];
+            let stringInterno = arr[j][1];
+
+            let mapInterno = new Map(Object.entries(JSON.parse(stringInterno)));
+
+            let title = mapInterno.get("title");
+            let description = mapInterno.get("description");
+
+            addCard(task, id, title, description);
 
         }
     }
 
 }
 
-function excluirCard(title, campoTask) {
+function excluirCard(id, campoTask) {
 
     let taskStorage = getTaskStorage(campoTask);
-    taskStorage.delete(title);
-
-    let obj = Object.fromEntries(taskStorage);
-    let json = JSON.stringify(obj);
-
     excluirStorageKey(campoTask);
-    createStorageKey(campoTask, json);
+
+    let newTaskStorage = deleteTask(id,taskStorage);
+   
+    createStorageKey(campoTask, newTaskStorage);
 
     showCards();
 }
