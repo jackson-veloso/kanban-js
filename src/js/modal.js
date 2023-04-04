@@ -5,7 +5,7 @@ function openModal(task) {
     modal.style.opacity = 1;
 }
 
-function openModalEdit(campoTask, title, description) {
+function openModalEdit(campoTask, id, title, description) {
 
     let modal_title = document.getElementById("modal-title");
     let modal_description = document.getElementById("modal-description");
@@ -14,6 +14,7 @@ function openModalEdit(campoTask, title, description) {
     modal_description.value = description;
 
     openModal(campoTask);
+    setID(id);
 }
 
 function closeModal() {
@@ -21,6 +22,7 @@ function closeModal() {
     modal.style.opacity = 0;
     resetForm();
     modalRequiredNone();
+    setID(null);
 
 }
 

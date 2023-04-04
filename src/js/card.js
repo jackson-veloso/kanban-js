@@ -76,9 +76,16 @@ function excluirCard(id, campoTask) {
     showCards();
 }
 
-function editarCard(title, campoTask) {
+function editarCard(id, campoTask) {
     let taskStorage = getTaskStorage(campoTask);
-    let description = taskStorage.get(title);
+
+    let stringInterno = taskStorage.get(id);
+
+    let mapInterno = new Map(Object.entries(JSON.parse(stringInterno)));
+
+    let title = mapInterno.get("title");
+    let description = mapInterno.get("description");
     
-    openModalEdit(campoTask,title,description);
+    
+    openModalEdit(campoTask,id,title,description);
 }

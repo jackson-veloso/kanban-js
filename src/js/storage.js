@@ -1,3 +1,9 @@
+let campoID = null;
+
+function setID(id){
+    campoID = id;
+}
+
 function createStorageKeys() {
     if (localStorage.getItem("taskToDo") === null) {
         localStorage.setItem("taskToDo", "{}");
@@ -37,7 +43,14 @@ function addLocalStorage(task,title,description){
     let objInterno = Object.fromEntries(mapInterno);
     let stringInterno = JSON.stringify(objInterno);
 
-    let id = getNewID(taskStorage);
+    let id = null;
+
+    if(campoID === null) {
+        id = getNewID(taskStorage);
+    } else {
+        id = campoID;
+    }
+
     
     taskStorage.set(id,stringInterno);
 
@@ -45,6 +58,7 @@ function addLocalStorage(task,title,description){
     let json = JSON.stringify(obj);
 
     localStorage.setItem(task,json);
+    setID(null);
 }
 
 
